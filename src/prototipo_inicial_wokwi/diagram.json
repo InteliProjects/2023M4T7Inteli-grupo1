@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "author": "Mauro Junior",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": -283.3, "left": -245, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": -137.6,
+      "left": -42.4,
+      "attrs": { "pins": "i2c" }
+    },
+    {
+      "type": "wokwi-rgb-led",
+      "id": "rgb1",
+      "top": -322.4,
+      "left": -46.9,
+      "attrs": { "common": "cathode" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": -168.55,
+      "left": -97.4,
+      "rotate": 180,
+      "attrs": { "value": "100" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": -225.6,
+      "left": -48.55,
+      "rotate": 90,
+      "attrs": { "value": "100" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": -235.2,
+      "left": -29.35,
+      "rotate": 90,
+      "attrs": { "value": "100" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": -202.2,
+      "left": -333,
+      "rotate": 90,
+      "attrs": { "color": "blue" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -381.6,
+      "left": -123,
+      "attrs": { "volume": "0.1" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "lcd1:GND", "esp:GND.1", "black", [ "h-48", "v-28.8" ] ],
+    [ "esp:3V3", "lcd1:VCC", "purple", [ "v0", "h47.7", "v28.8" ] ],
+    [ "esp:D21", "lcd1:SDA", "magenta", [ "h38.1", "v134" ] ],
+    [ "esp:D22", "lcd1:SCL", "cyan", [ "h28.5", "v172.5" ] ],
+    [ "esp:GND.1", "rgb1:COM", "white", [ "h18.9", "v-9.7", "h96" ] ],
+    [ "esp:D4", "r1:2", "red", [ "h0" ] ],
+    [ "r1:1", "rgb1:R", "red", [ "v0" ] ],
+    [ "esp:D5", "r2:2", "limegreen", [ "h0" ] ],
+    [ "r2:1", "rgb1:G", "limegreen", [ "h0" ] ],
+    [ "esp:D18", "r3:2", "blue", [ "h0" ] ],
+    [ "r3:1", "rgb1:B", "blue", [ "h-9.6" ] ],
+    [ "btn1:1.r", "esp:GND.2", "white", [ "v0" ] ],
+    [ "btn1:2.l", "esp:D12", "orange", [ "v-9.6", "h47.8", "v67.2" ] ],
+    [ "bz1:1", "esp:GND.1", "#8f4814", [ "v0" ] ],
+    [ "bz1:2", "esp:D19", "yellow", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
